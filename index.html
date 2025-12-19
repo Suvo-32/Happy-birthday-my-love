@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Our Story ❤️</title>
@@ -91,185 +92,203 @@
     }
 
     @keyframes rise {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- 🔐 LOCK SCREEN -->
-<div id="lock-screen">
-  <h1>🎁 A surprise is waiting…</h1>
-  <p>Hold on till the clock strikes midnight 💜</p>
-  <div id="countdown"></div>
-</div>
+  <!-- 🔐 LOCK SCREEN -->
+  <div id="lock-screen">
+    <h1>🎁 A surprise is waiting…</h1>
+    <p>Hold on till the clock strikes midnight 💜</p>
+    <div id="countdown"></div>
+  </div>
 
-<!-- 🎬 UNLOCK BIRTHDAY ANIMATION -->
-<div id="unlock-animation">
-  <h1 class="unlock-title">Happy Birthday</h1>
-  <h2 class="unlock-name">My Moonshine Sunflower 🌙🌻</h2>
-  <p class="unlock-text">Forever & Always ❤️</p>
-</div>
+  <!-- 🎬 UNLOCK BIRTHDAY ANIMATION -->
+  <div id="unlock-animation">
+    <h1 class="unlock-title">Happy Birthday</h1>
+    <h2 class="unlock-name">My Moonshine Sunflower 🌙🌻</h2>
+    <p class="unlock-text">Forever & Always ❤️</p>
+  </div>
 
-<!-- 🔓 MAIN SITE -->
-<div id="site-content" style="display:none;">
+  <!-- 🔓 MAIN SITE -->
+  <div id="site-content" style="display:none;">
 
-  <!-- INTRO -->
-  <section id="intro">
-    <div class="intro-images"></div>
-    <div class="intro-text-wrap">
-      <h1 class="intro-text">The story of Fight & Love ❤️</h1>
-      <p class="intro-subtext">Golden blossoms on the mountain</p>
-    </div>
-  </section>
+    <!-- INTRO -->
+    <section id="intro">
+      <div class="intro-images"></div>
+      <div class="intro-text-wrap">
+        <h1 class="intro-text">The story of Fight & Love ❤️</h1>
+        <p class="intro-subtext">Golden blossoms on the mountain</p>
+      </div>
+    </section>
 
-  <!-- CHAPTER ONE -->
-  <section class="chapter" id="chapter-1">
-    <div class="chapter-inner">
-      <h2 class="chapter-title">Chapter One</h2>
-      <h3 class="chapter-name">Cotton Candy</h3>
+    <!-- CHAPTER ONE -->
+    <section class="chapter" id="chapter-1">
+      <div class="chapter-inner">
+        <h2 class="chapter-title">Chapter One</h2>
+        <h3 class="chapter-name">Cotton Candy</h3>
 
-      <div class="chapter-content">
-        <p>
-          It all started with a message…
-          when I first texted you from my fake Instagram account.
-          A small lie that led to the most honest love.
-        </p>
+        <div class="chapter-content">
+          <p>
+            It all started with a message…
+            when I first texted you from my fake Instagram account.
+            A small lie that led to the most honest love.
+          </p>
 
-        <p>
-          Rainy nights, endless talks,
-          silence between words,
-          comfort through the phone —
-          those nights are my favorite.
-        </p>
+          <p>
+            Rainy nights, endless talks,
+            silence between words,
+            comfort through the phone —
+            those nights are my favorite.
+          </p>
 
-        <p>
-          <strong>23rd June</strong>, Ganga riverside.
-          Your head on my shoulder —
-          I felt alive.
-        </p>
+          <p>
+            <strong>23rd June</strong>, Ganga riverside.
+            Your head on my shoulder —
+            I felt alive.
+          </p>
 
-        <p class="chapter-love">
-          I don’t love you…
-          I fall in love with you every second.
-          Forever.
-        </p>
+          <p class="chapter-love">
+            I don’t love you…
+            I fall in love with you every second.
+            Forever.
+          </p>
+        </div>
+
+        <div class="chapter-images">
+          <img src="images/chapter1/1.jpeg">
+          <img src="images/chapter1/2.jpeg">
+          <img src="images/chapter1/3.jpeg">
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER TWO -->
+    <section class="chapter chapter-two" id="chapter-2">
+      <div class="chapter-two-inner">
+        <div class="chapter-two-text">
+          <h2 class="chapter-two-title">Chapter Two</h2>
+          <h3 class="chapter-two-name">Unfinished Yet Infinite</h3>
+
+          <p>Yes babe, we fight a lot.</p>
+          <p>But every fight ends with one cry, one kiss, one love.</p>
+          <p>I see the moon in your eyes. I see my breath in your smile.</p>
+
+          <p class="chapter-two-love">
+            Love you, my moonshine sunflower 🌙🌻
+          </p>
+        </div>
+
+        <div class="chapter-two-images">
+          <img src="images/chapter2/1.jpeg">
+          <img src="images/chapter2/2.jpeg">
+        </div>
+      </div>
+    </section>
+
+    <!-- 🎂 BIRTHDAY -->
+    <section id="birthday">
+      <div class="birthday-overlay"></div>
+      <div class="birthday-content">
+        <h2 class="birthday-title">Happy Birthday</h2>
+        <h1 class="birthday-name">My Moonshine Sunflower 🌙🌻</h1>
+        <p id="birthday-text"></p>
       </div>
 
-      <div class="chapter-images">
-        <img src="images/chapter1/1.jpeg">
-        <img src="images/chapter1/2.jpeg">
-        <img src="images/chapter1/3.jpeg">
+      <div class="birthday-photos">
+        <img src="images/birthday/1.jpeg">
+        <img src="images/birthday/2.jpeg">
+        <img src="images/birthday/3.jpeg">
+        <img src="images/birthday/4.jpeg">
+        <img src="images/birthday/5.jpeg">
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CHAPTER TWO -->
-  <section class="chapter chapter-two" id="chapter-2">
-    <div class="chapter-two-inner">
-      <div class="chapter-two-text">
-        <h2 class="chapter-two-title">Chapter Two</h2>
-        <h3 class="chapter-two-name">Unfinished Yet Infinite</h3>
+  </div>
 
-        <p>Yes babe, we fight a lot.</p>
-        <p>But every fight ends with one cry, one kiss, one love.</p>
-        <p>I see the moon in your eyes. I see my breath in your smile.</p>
+  <!-- MAIN JS -->
+  <script src="js/intro.js"></script>
 
-        <p class="chapter-two-love">
-          Love you, my moonshine sunflower 🌙🌻
-        </p>
-      </div>
+  <!-- ⏰ LOCK + UNLOCK JS -->
+  <script>
+    (function () {
+      const unlockTime = new Date(
+        new Date().getFullYear(),
+        11, // December
+        19,
+        23,
+        11,
+        0
+      ).getTime();
 
-      <div class="chapter-two-images">
-        <img src="images/chapter2/1.jpeg">
-        <img src="images/chapter2/2.jpeg">
-      </div>
-    </div>
-  </section>
+      const lock = document.getElementById("lock-screen");
+      const site = document.getElementById("site-content");
+      const countdown = document.getElementById("countdown");
+      const anim = document.getElementById("unlock-animation");
 
-  <!-- 🎂 BIRTHDAY -->
-  <section id="birthday">
-    <div class="birthday-overlay"></div>
-    <div class="birthday-content">
-      <h2 class="birthday-title">Happy Birthday</h2>
-      <h1 class="birthday-name">My Moonshine Sunflower 🌙🌻</h1>
-      <p id="birthday-text"></p>
-    </div>
+      function tick() {
+        const diff = unlockTime - Date.now();
 
-    <div class="birthday-photos">
-      <img src="images/birthday/1.jpeg">
-      <img src="images/birthday/2.jpeg">
-      <img src="images/birthday/3.jpeg">
-      <img src="images/birthday/4.jpeg">
-      <img src="images/birthday/5.jpeg">
-    </div>
-  </section>
+        if (diff <= 0) {
+          lock.style.display = "none";
+          anim.style.display = "flex";
 
-</div>
+          // 💖 hearts burst
+          for (let i = 0; i < 40; i++) {
+            setTimeout(() => {
+              const h = document.createElement("div");
+              h.className = "unlock-heart";
+              h.innerHTML = "💖";
+              h.style.left = Math.random() * window.innerWidth + "px";
+              h.style.top = window.innerHeight + "px";
+              document.body.appendChild(h);
+              setTimeout(() => h.remove(), 2000);
+            }, i * 120);
+          }
 
-<!-- MAIN JS -->
-<script src="js/intro.js"></script>
+          // after animation → show site
+          setTimeout(() => {
+            anim.style.display = "none";
+            site.style.display = "block";
+          }, 8000);
 
-<!-- ⏰ LOCK + UNLOCK JS -->
-<script>
-(function () {
-  const unlockTime = new Date(
-    new Date().getFullYear(),
-    11, // December
-    19,
-    21,
-    49,
-    0
-  ).getTime();
+          return;
+        }
 
-  const lock = document.getElementById("lock-screen");
-  const site = document.getElementById("site-content");
-  const countdown = document.getElementById("countdown");
-  const anim = document.getElementById("unlock-animation");
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
 
-  function tick() {
-    const diff = unlockTime - Date.now();
-
-    if (diff <= 0) {
-      lock.style.display = "none";
-      anim.style.display = "flex";
-
-      // 💖 hearts burst
-      for (let i = 0; i < 40; i++) {
-        setTimeout(() => {
-          const h = document.createElement("div");
-          h.className = "unlock-heart";
-          h.innerHTML = "💖";
-          h.style.left = Math.random() * window.innerWidth + "px";
-          h.style.top = window.innerHeight + "px";
-          document.body.appendChild(h);
-          setTimeout(() => h.remove(), 2000);
-        }, i * 120);
+        countdown.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
       }
 
-      // after animation → show site
-      setTimeout(() => {
-        anim.style.display = "none";
-        site.style.display = "block";
-      }, 8000);
+      tick();
+      // setInterval(tick, 1000);
+      if (diff <= 0) {
+        lock.style.display = "none";
+        anim.style.display = "flex";
+  
+        setTimeout(() => {
+          anim.style.display = "none";
+          site.style.display = "block";
+        }, 8000);
+      }
 
-      return;
-    }
-
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-    const s = Math.floor((diff / 1000) % 60);
-
-    countdown.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
-  }
-
-  tick();
-  setInterval(tick, 1000);
-})();
-</script>
+    })();
+  </script>
 
 </body>
+
 </html>
