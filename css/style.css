@@ -1,0 +1,567 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GLOBAL BACKGROUND */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #24123f, #05010d);
+  color: #f4eaff;
+  overflow-x: hidden;
+}
+
+/* INTRO */
+#intro {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* INTRO TEXT */
+.intro-text-wrap {
+  position: absolute;
+  bottom: 14%;
+  width: 100%;
+  text-align: center;
+}
+
+.intro-text {
+  font-size: 2.6rem;
+  background: linear-gradient(90deg, #ffd6ff, #ffc8dd, #ffd6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: fadeUp 2s ease forwards;
+  animation-delay: 2.4s;
+}
+
+.intro-subtext {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #e5d9ff;
+  opacity: 0;
+  animation: fadeUp 2s ease forwards;
+  animation-delay: 2.9s;
+}
+
+/* INTRO IMAGES */
+.intro-images img {
+  position: absolute;
+  width: 150px;
+  border-radius: 18px;
+  cursor: grab;
+  opacity: 0;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+
+  animation:
+    slideIn 2.5s ease forwards,
+    floatSoft 6s ease-in-out infinite;
+
+  animation-delay:
+    var(--delay),
+    calc(var(--delay) + 2.5s);
+}
+
+.intro-images img:active {
+  cursor: grabbing;
+}
+
+/* CHAPTER */
+.chapter {
+  min-height: 100vh;
+  padding: 160px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chapter-inner {
+  max-width: 900px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.6s ease;
+}
+
+.chapter.show .chapter-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CHAPTER TITLES */
+.chapter-title {
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  color: #cdb4ff;
+  margin-bottom: 12px;
+}
+
+.chapter-name {
+  font-size: 3.2rem;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #ffd166, #ffb703);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* TEXT */
+.chapter-content p {
+  font-size: 1.28rem;
+  line-height: 2;
+  color: #e5d9ff;
+  margin-bottom: 30px;
+}
+
+.chapter-love {
+  font-size: 1.45rem;
+  font-style: italic;
+  color: #ffd6ff;
+  margin-top: 50px;
+}
+
+/* CHAPTER IMAGES */
+.chapter-images {
+  margin-top: 70px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.chapter-images img {
+  width: 240px;
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+  animation: floatSoft 6s ease-in-out infinite;
+  transition: transform 0.6s ease;
+}
+
+.chapter-images img:nth-child(2) { animation-delay: 1.5s; }
+.chapter-images img:nth-child(3) { animation-delay: 3s; }
+
+.chapter-images img:hover {
+  transform: scale(1.08) rotate(1deg);
+}
+
+/* HEART */
+.heart {
+  position: absolute;
+  font-size: 16px;
+  color: #c77dff;
+  pointer-events: none;
+  animation: heartFloat 1.2s ease forwards;
+}
+
+/* ANIMATIONS */
+@keyframes slideIn {
+  from { transform: translate(var(--fromX), var(--fromY)) scale(0.6); opacity: 0; }
+  to { transform: translate(0,0) scale(1); opacity: 1; }
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px rgba(255,183,3,0.3); }
+  50% { text-shadow: 0 0 30px rgba(255,183,3,0.7); }
+  100% { text-shadow: 0 0 10px rgba(255,183,3,0.3); }
+}
+
+@keyframes heartFloat {
+  to { opacity: 0; transform: translate(-10px,-50px) scale(1.6); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .intro-text { font-size: 2rem; }
+  .chapter-name { font-size: 2.3rem; }
+  .chapter-images img { width: 180px; }
+}
+
+/* =========================
+   AESTHETIC CHAPTER IMAGES
+========================= */
+
+.chapter-images {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+  perspective: 1000px;
+}
+
+/* BASE IMAGE STYLE */
+.chapter-images img {
+  width: 240px;
+  border-radius: 22px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.45),
+    0 0 40px rgba(255,214,255,0.15);
+
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+
+  animation:
+    imageReveal 1.6s ease forwards,
+    floatSoft 6s ease-in-out infinite;
+
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
+}
+
+/* STAGGERED ENTRANCE */
+.chapter-images img:nth-child(1) {
+  animation-delay: 0.2s, 2s;
+}
+.chapter-images img:nth-child(2) {
+  animation-delay: 0.6s, 2.4s;
+}
+.chapter-images img:nth-child(3) {
+  animation-delay: 1s, 2.8s;
+}
+
+/* HOVER – ROMANTIC LIFT */
+.chapter-images img:hover {
+  transform: scale(1.1) rotateY(5deg);
+  box-shadow:
+    0 40px 90px rgba(0,0,0,0.6),
+    0 0 70px rgba(255,200,255,0.45);
+}
+
+/* IMAGE REVEAL */
+@keyframes imageReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* FLOATING MEMORY EFFECT */
+@keyframes floatSoft {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .chapter-images img {
+    width: 180px;
+  }
+}
+
+@keyframes sparkleFade {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.6);
+  }
+}
+
+/* =========================
+   CHAPTER TWO – UNFINISHED YET INFINITE
+========================= */
+
+.chapter-two {
+  min-height: 100vh;
+  padding: 160px 8%;
+  display: flex;
+  align-items: center;
+}
+
+.chapter-two-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  align-items: center;
+}
+
+/* TEXT SIDE */
+.chapter-two-title {
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  color: #cdb4ff;
+  margin-bottom: 12px;
+}
+
+.chapter-two-name {
+  font-size: 3.1rem;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #b517ff, #ffd6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slowGlow 5s ease-in-out infinite;
+}
+
+.chapter-two-text p {
+  font-size: 1.3rem;
+  line-height: 2;
+  color: #e8ddff;
+  margin-bottom: 28px;
+}
+
+/* LOVE LINE */
+.chapter-two-love {
+  margin-top: 40px;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #ffd6ff;
+}
+
+/* IMAGE SIDE */
+.chapter-two-images {
+  position: relative;
+  height: 420px;
+}
+
+.chapter-two-images img {
+  position: absolute;
+  width: 260px;
+  border-radius: 20px;
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.5),
+    0 0 40px rgba(181,23,255,0.25);
+
+  opacity: 0;
+  transform: scale(0.9);
+
+  animation: imageFadeIn 2s ease forwards,
+             moonFloat 7s ease-in-out infinite;
+}
+
+/* IMAGE POSITIONS */
+.chapter-two-images img:first-child {
+  top: 0;
+  left: 40px;
+  animation-delay: 0.4s, 2.4s;
+}
+
+.chapter-two-images img:last-child {
+  bottom: 0;
+  right: 0;
+  animation-delay: 0.8s, 2.8s;
+}
+
+/* =========================
+   ANIMATIONS (CHAPTER TWO)
+========================= */
+
+@keyframes imageFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes moonFloat {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-14px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes slowGlow {
+  0% { text-shadow: 0 0 10px rgba(181,23,255,0.3); }
+  50% { text-shadow: 0 0 35px rgba(181,23,255,0.7); }
+  100% { text-shadow: 0 0 10px rgba(181,23,255,0.3); }
+}
+
+/* =========================
+   MOBILE – STACKED & SOFT
+========================= */
+
+@media (max-width: 900px) {
+  .chapter-two-inner {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .chapter-two-images {
+    height: 360px;
+  }
+
+  .chapter-two-images img {
+    position: relative;
+    margin: auto;
+  }
+
+  .chapter-two-images img:last-child {
+    margin-top: 30px;
+  }
+}
+
+.chapter-two {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.6s ease;
+}
+
+.chapter-two.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   BIRTHDAY FINAL SECTION
+========================= */
+#birthday {
+  position: relative;
+  min-height: 120vh;
+  padding: 160px 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Soft glowing overlay */
+.birthday-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center,
+      rgba(255,214,255,0.15),
+      transparent 70%);
+  pointer-events: none;
+}
+
+/* CONTENT */
+.birthday-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: auto;
+}
+
+.birthday-title {
+  font-size: 1.2rem;
+  letter-spacing: 5px;
+  color: #cdb4ff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.birthday-name {
+  font-size: 3.6rem;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #ffd166, #ffafcc, #ffd166);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+#birthday-text {
+  font-size: 1.6rem;
+  line-height: 2;
+  color: #f4eaff;
+  min-height: 140px;
+}
+
+/* =========================
+   BIRTHDAY PHOTOS
+========================= */
+.birthday-photos {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.birthday-photos img {
+  width: 100%;
+  border-radius: 22px;
+  opacity: 0;
+  transform: scale(0.8) rotate(-2deg);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.5),
+    0 0 40px rgba(255,214,255,0.2);
+
+  animation:
+    birthdayImageIn 1.5s ease forwards,
+    floatSoft 6s ease-in-out infinite;
+
+  transition: transform 0.6s ease;
+}
+
+/* Stagger animation */
+.birthday-photos img:nth-child(odd) {
+  animation-delay: 0.2s, 2s;
+}
+.birthday-photos img:nth-child(even) {
+  animation-delay: 0.6s, 2.4s;
+}
+
+.birthday-photos img:hover {
+  transform: scale(1.1) rotate(1deg);
+}
+
+/* =========================
+   SPARKLES
+========================= */
+.sparkle {
+  position: absolute;
+  font-size: 14px;
+  color: #ffd6ff;
+  pointer-events: none;
+  animation: sparkleFloat 1.8s ease forwards;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes birthdayImageIn {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sparkleFloat {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.8);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .birthday-name {
+    font-size: 2.4rem;
+  }
+
+  #birthday-text {
+    font-size: 1.2rem;
+  }
+}
+

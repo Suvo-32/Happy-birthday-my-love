@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Story ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- MAIN STYLES -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 🔐 INLINE LOCK SCREEN CSS -->
+  <style>
+    #lock-screen {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #24123f, #05010d);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f4eaff;
+      z-index: 99999;
+      padding: 20px;
+    }
+
+    #lock-screen h1 {
+      font-size: 2.6rem;
+      background: linear-gradient(90deg, #ffd6ff, #ffc8dd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    #lock-screen p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #e5d9ff;
+    }
+
+    #countdown {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: #ffd6ff;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🔐 LOCK SCREEN -->
+<div id="lock-screen">
+  <h1>🎁 A surprise is waiting…</h1>
+  <p>Hold on till the clock strikes midnight 💜</p>
+  <div id="countdown"></div>
+</div>
+
+<!-- 🔓 MAIN SITE CONTENT -->
+<div id="site-content" style="display:none;">
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="intro-images"></div>
+    <div class="intro-text-wrap">
+      <h1 class="intro-text">The story of Fight & Love ❤️</h1>
+      <p class="intro-subtext">Golden blossoms on the mountain</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER ONE -->
+  <section class="chapter" id="chapter-1">
+    <div class="chapter-inner">
+      <h2 class="chapter-title">Chapter One</h2>
+      <h3 class="chapter-name">Cotton Candy</h3>
+
+      <div class="chapter-content">
+        <p>
+          It all started with a message…
+          when I first texted you from my fake Instagram account.
+          A small lie that led to the most honest love.
+        </p>
+
+        <p>
+          Rainy nights, endless talks,
+          silence between words,
+          comfort through the phone —
+          those nights are my favorite.
+        </p>
+
+        <p>
+          <strong>23rd June</strong>, Ganga riverside.
+          Your head on my shoulder —
+          I felt alive.
+        </p>
+
+        <p class="chapter-love">
+          I don’t love you…
+          I fall in love with you every second.
+          Forever.
+        </p>
+      </div>
+
+      <div class="chapter-images">
+        <img src="images/chapter1/1.jpeg">
+        <img src="images/chapter1/2.jpeg">
+        <img src="images/chapter1/3.jpeg">
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER TWO -->
+  <section class="chapter chapter-two" id="chapter-2">
+    <div class="chapter-two-inner">
+
+      <div class="chapter-two-text">
+        <h2 class="chapter-two-title">Chapter Two</h2>
+        <h3 class="chapter-two-name">Unfinished Yet Infinite</h3>
+
+        <p>Yes babe, we fight a lot.</p>
+        <p>But every fight ends with one cry, one kiss, one love.</p>
+        <p>I see the moon in your eyes. I see my breath in your smile.</p>
+
+        <p class="chapter-two-love">
+          Love you, my moonshine sunflower 🌙🌻
+        </p>
+      </div>
+
+      <div class="chapter-two-images">
+        <img src="images/chapter2/1.jpeg">
+        <img src="images/chapter2/2.jpeg">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🎂 BIRTHDAY FINAL -->
+  <section id="birthday">
+    <div class="birthday-overlay"></div>
+
+    <div class="birthday-content">
+      <h2 class="birthday-title">Happy Birthday</h2>
+      <h1 class="birthday-name">My Moonshine Sunflower 🌙🌻</h1>
+      <p id="birthday-text"></p>
+    </div>
+
+    <div class="birthday-photos">
+      <img src="images/birthday/1.jpeg">
+      <img src="images/birthday/2.jpeg">
+      <img src="images/birthday/3.jpeg">
+      <img src="images/birthday/4.jpeg">
+      <img src="images/birthday/5.jpeg">
+      <img src="images/birthday/6.jpeg">
+      <img src="images/birthday/7.jpeg">
+      <img src="images/birthday/8.jpeg">
+      <img src="images/birthday/9.jpeg">
+      <img src="images/birthday/10.jpeg">
+    </div>
+  </section>
+
+</div>
+
+<!-- MAIN JS -->
+<script src="js/intro.js"></script>
+
+<!-- ⏰ INLINE LOCK SCREEN JS -->
+<script>
+(function () {
+  // 🔓 Unlock time: 19 Dec 11:59 PM (local)
+  const unlockTime = new Date(
+    new Date().getFullYear(),
+    11, // December
+    19,
+    21,
+    26,
+    0
+  ).getTime();
+
+  const lock = document.getElementById("lock-screen");
+  const site = document.getElementById("site-content");
+  const countdown = document.getElementById("countdown");
+
+  function tick() {
+    const now = Date.now();
+    const diff = unlockTime - now;
+
+    if (diff <= 0) {
+      lock.style.display = "none";
+      site.style.display = "block";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    countdown.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>
