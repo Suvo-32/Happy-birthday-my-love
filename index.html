@@ -92,20 +92,18 @@
     }
 
     @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- 🎵 BACKGROUND MUSIC (ADDED) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="music/love.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- 🔐 LOCK SCREEN -->
   <div id="lock-screen">
@@ -220,15 +218,15 @@
   <!-- MAIN JS -->
   <script src="js/intro.js"></script>
 
-  <!-- ⏰ LOCK + UNLOCK JS -->
+  <!-- ⏰ LOCK + UNLOCK JS (SONG ADDED ONLY) -->
   <script>
 (function () {
   const unlockTime = new Date(
     new Date().getFullYear(),
-    11, // December
+    11,
     19,
     23,
-    16,
+    17,
     0
   ).getTime();
 
@@ -236,11 +234,12 @@
   const site = document.getElementById("site-content");
   const countdown = document.getElementById("countdown");
   const anim = document.getElementById("unlock-animation");
+  const music = document.getElementById("bg-music");
 
-  let unlocked = false; // ✅ prevents re-running unlock logic
+  let unlocked = false;
 
   const timer = setInterval(tick, 1000);
-  tick(); // initial render
+  tick();
 
   function tick() {
     if (unlocked) return;
@@ -254,7 +253,10 @@
       lock.style.display = "none";
       anim.style.display = "flex";
 
-      // 💖 hearts burst (ONE TIME)
+      /* 🎵 PLAY MUSIC */
+      music.volume = 0.4;
+      music.play().catch(() => {});
+
       for (let i = 0; i < 40; i++) {
         setTimeout(() => {
           const h = document.createElement("div");
@@ -267,7 +269,6 @@
         }, i * 120);
       }
 
-      // 🎬 after animation → show site
       setTimeout(() => {
         anim.style.display = "none";
         site.style.display = "block";
@@ -276,7 +277,6 @@
       return;
     }
 
-    // ⏳ LIVE COUNTDOWN UPDATE
     const d = Math.floor(diff / (1000 * 60 * 60 * 24));
     const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const m = Math.floor((diff / (1000 * 60)) % 60);
@@ -287,7 +287,5 @@
 })();
 </script>
 
-
 </body>
-
 </html>
