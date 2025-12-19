@@ -8,8 +8,9 @@
   <!-- MAIN STYLES -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- 🔐 INLINE LOCK SCREEN CSS -->
+  <!-- 🔐 LOCK + UNLOCK INLINE CSS -->
   <style>
+    /* LOCK SCREEN */
     #lock-screen {
       position: fixed;
       inset: 0;
@@ -43,6 +44,56 @@
       letter-spacing: 2px;
       color: #ffd6ff;
     }
+
+    /* 🎬 UNLOCK ANIMATION */
+    #unlock-animation {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #2b145a, #070111);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 100000;
+      color: #fff;
+    }
+
+    .unlock-title {
+      font-size: 3rem;
+      letter-spacing: 6px;
+      color: #ffd6ff;
+      opacity: 0;
+      animation: rise 2s ease forwards;
+    }
+
+    .unlock-name {
+      font-size: 3.6rem;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #ffd166, #ffafcc, #ffd166);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      animation: rise 2s ease forwards 1.4s;
+    }
+
+    .unlock-text {
+      margin-top: 40px;
+      font-size: 1.6rem;
+      opacity: 0;
+      animation: fadeUp 2s ease forwards 3s;
+    }
+
+    .unlock-heart {
+      position: absolute;
+      font-size: 18px;
+      animation: heartFloat 2s ease forwards;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 
@@ -55,7 +106,14 @@
   <div id="countdown"></div>
 </div>
 
-<!-- 🔓 MAIN SITE CONTENT -->
+<!-- 🎬 UNLOCK BIRTHDAY ANIMATION -->
+<div id="unlock-animation">
+  <h1 class="unlock-title">Happy Birthday</h1>
+  <h2 class="unlock-name">My Moonshine Sunflower 🌙🌻</h2>
+  <p class="unlock-text">Forever & Always ❤️</p>
+</div>
+
+<!-- 🔓 MAIN SITE -->
 <div id="site-content" style="display:none;">
 
   <!-- INTRO -->
@@ -111,7 +169,6 @@
   <!-- CHAPTER TWO -->
   <section class="chapter chapter-two" id="chapter-2">
     <div class="chapter-two-inner">
-
       <div class="chapter-two-text">
         <h2 class="chapter-two-title">Chapter Two</h2>
         <h3 class="chapter-two-name">Unfinished Yet Infinite</h3>
@@ -129,14 +186,12 @@
         <img src="images/chapter2/1.jpeg">
         <img src="images/chapter2/2.jpeg">
       </div>
-
     </div>
   </section>
 
-  <!-- 🎂 BIRTHDAY FINAL -->
+  <!-- 🎂 BIRTHDAY -->
   <section id="birthday">
     <div class="birthday-overlay"></div>
-
     <div class="birthday-content">
       <h2 class="birthday-title">Happy Birthday</h2>
       <h1 class="birthday-name">My Moonshine Sunflower 🌙🌻</h1>
@@ -149,11 +204,6 @@
       <img src="images/birthday/3.jpeg">
       <img src="images/birthday/4.jpeg">
       <img src="images/birthday/5.jpeg">
-      <img src="images/birthday/6.jpeg">
-      <img src="images/birthday/7.jpeg">
-      <img src="images/birthday/8.jpeg">
-      <img src="images/birthday/9.jpeg">
-      <img src="images/birthday/10.jpeg">
     </div>
   </section>
 
@@ -162,10 +212,9 @@
 <!-- MAIN JS -->
 <script src="js/intro.js"></script>
 
-<!-- ⏰ INLINE LOCK SCREEN JS -->
+<!-- ⏰ LOCK + UNLOCK JS -->
 <script>
 (function () {
-  // 🔓 Unlock time: 19 Dec 11:59 PM (local)
   const unlockTime = new Date(
     new Date().getFullYear(),
     11, // December
@@ -178,14 +227,34 @@
   const lock = document.getElementById("lock-screen");
   const site = document.getElementById("site-content");
   const countdown = document.getElementById("countdown");
+  const anim = document.getElementById("unlock-animation");
 
   function tick() {
-    const now = Date.now();
-    const diff = unlockTime - now;
+    const diff = unlockTime - Date.now();
 
     if (diff <= 0) {
       lock.style.display = "none";
-      site.style.display = "block";
+      anim.style.display = "flex";
+
+      // 💖 hearts burst
+      for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+          const h = document.createElement("div");
+          h.className = "unlock-heart";
+          h.innerHTML = "💖";
+          h.style.left = Math.random() * window.innerWidth + "px";
+          h.style.top = window.innerHeight + "px";
+          document.body.appendChild(h);
+          setTimeout(() => h.remove(), 2000);
+        }, i * 120);
+      }
+
+      // after animation → show site
+      setTimeout(() => {
+        anim.style.display = "none";
+        site.style.display = "block";
+      }, 8000);
+
       return;
     }
 
