@@ -222,72 +222,71 @@
 
   <!-- ⏰ LOCK + UNLOCK JS -->
   <script>
-    (function () {
-      const unlockTime = new Date(
-        new Date().getFullYear(),
-        11, // December
-        19,
-        23,
-        16,
-        0
-      ).getTime();
+(function () {
+  const unlockTime = new Date(
+    new Date().getFullYear(),
+    11, // December
+    19,
+    23,
+    16,
+    0
+  ).getTime();
 
-      const lock = document.getElementById("lock-screen");
-      const site = document.getElementById("site-content");
-      const countdown = document.getElementById("countdown");
-      const anim = document.getElementById("unlock-animation");
+  const lock = document.getElementById("lock-screen");
+  const site = document.getElementById("site-content");
+  const countdown = document.getElementById("countdown");
+  const anim = document.getElementById("unlock-animation");
 
-      function tick() {
-        const diff = unlockTime - Date.now();
+  let unlocked = false; // ✅ prevents re-running unlock logic
 
-        if (diff <= 0) {
-          lock.style.display = "none";
-          anim.style.display = "flex";
+  const timer = setInterval(tick, 1000);
+  tick(); // initial render
 
-          // 💖 hearts burst
-          for (let i = 0; i < 40; i++) {
-            setTimeout(() => {
-              const h = document.createElement("div");
-              h.className = "unlock-heart";
-              h.innerHTML = "💖";
-              h.style.left = Math.random() * window.innerWidth + "px";
-              h.style.top = window.innerHeight + "px";
-              document.body.appendChild(h);
-              setTimeout(() => h.remove(), 2000);
-            }, i * 120);
-          }
+  function tick() {
+    if (unlocked) return;
 
-          // after animation → show site
-          setTimeout(() => {
-            anim.style.display = "none";
-            site.style.display = "block";
-          }, 8000);
+    const diff = unlockTime - Date.now();
 
-          return;
-        }
+    if (diff <= 0) {
+      unlocked = true;
+      clearInterval(timer);
 
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const m = Math.floor((diff / (1000 * 60)) % 60);
-        const s = Math.floor((diff / 1000) % 60);
+      lock.style.display = "none";
+      anim.style.display = "flex";
 
-        countdown.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
-      }
-
-      tick();
-      // setInterval(tick, 1000);
-      if (diff <= 0) {
-        lock.style.display = "none";
-        anim.style.display = "flex";
-  
+      // 💖 hearts burst (ONE TIME)
+      for (let i = 0; i < 40; i++) {
         setTimeout(() => {
-          anim.style.display = "none";
-          site.style.display = "block";
-        }, 8000);
+          const h = document.createElement("div");
+          h.className = "unlock-heart";
+          h.innerHTML = "💖";
+          h.style.left = Math.random() * window.innerWidth + "px";
+          h.style.top = window.innerHeight + "px";
+          document.body.appendChild(h);
+          setTimeout(() => h.remove(), 2000);
+        }, i * 120);
       }
 
-    })();
-  </script>
+      // 🎬 after animation → show site
+      setTimeout(() => {
+        anim.style.display = "none";
+        site.style.display = "block";
+      }, 8000);
+
+      return;
+    }
+
+    // ⏳ LIVE COUNTDOWN UPDATE
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    countdown.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+  }
+})();
+</script>
+
 
 </body>
 
